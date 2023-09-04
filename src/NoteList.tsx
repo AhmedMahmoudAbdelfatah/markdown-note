@@ -2,7 +2,8 @@ import { Button, Col, Form, Row, Stack } from "react-bootstrap";
 import { Tag } from "./App";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { NoteCard } from "./NoteCard";
 
 type NodeListProps = {
   notes: Note[],
@@ -20,11 +21,18 @@ type Note = {
 export const NoteList = (props: NodeListProps) => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState<string>("");
+
+  const filteredNotes = useMemo(() => {
+    return props.notes.filter(note => {
+      return (title === "" || note.title.toLowerCase().includes(title.toLowerCase()))
+        && (selectedTags.length === 0 || selectedTags.every(selectedTag => note.tags.some(tag => tag.id === selectedTag.id)));
+    });
+  }, [props.notes, selectedTags, title]);
   
   return (
     <>
       <Row className="align-items-center mb-4">
-        <Col><h1>Notes { props.notes[0]?.title }</h1></Col>
+        <Col><h1>Notes</h1></Col>
         <Col xs="auto">
           <Stack direction="horizontal" gap={2}> 
             <Link to="/new">
@@ -64,6 +72,15 @@ export const NoteList = (props: NodeListProps) => {
           </Col>
         </Row>
       </Form>
+      <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} >
+        {
+          filteredNotes.map(note => (
+            <Col key={note.id}>
+              <NoteCard id={note.id} title={note.title} tags={ note.tags } />
+            </Col>
+          ))
+        }
+      </Row>
     </>
   )
 }

@@ -1,10 +1,11 @@
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route, Navigate} from 'react-router-dom'
 import { NewNote} from "./NewNote"
 import Container from 'react-bootstrap/esm/Container'
 import { useLocalStorage } from './useLocalStorage'
 import { useMemo } from 'react'
 import { v4 as uuidV4 } from "uuid"
 import { NoteList } from './NoteList'
+import { NoteLayout } from './NoteLayout'
 
 
 export type Tag = {
@@ -55,7 +56,12 @@ function App() {
     <Container className='my-4'>
       <Routes>
         <Route path='/' element={<NoteList notes={ notesWithTags } availableTags={tags}/>} />
-        <Route path='/new' element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={ tags } />} />
+        <Route path='/new' element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />} />
+        <Route path='/:id' element={<NoteLayout notes={notesWithTags} />}>
+          <Route index element={<h1>Show</h1>}></Route>
+          <Route path='edit' element={<h1>Edit</h1>}></Route>
+        </Route>
+        <Route path='*' element={ <Navigate to={"/"} replace/>}></Route>
       </Routes>
     </Container>
   )
