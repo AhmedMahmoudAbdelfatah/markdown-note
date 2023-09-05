@@ -8,8 +8,12 @@ type NoteLayoutProps = {
 export const NoteLayout = (props: NoteLayoutProps) => {
   const { id } = useParams();
   const note = props.notes.find(note => note.id === id);
-  if (note == null) return <Navigate to={"/"} replace/>
+
+  if (note == null) return <Navigate to={"/"} replace />
+  
   return (
-    <Outlet context={ props.notes }/>
+    <Outlet context={ note }/>
   )
 }
+
+
