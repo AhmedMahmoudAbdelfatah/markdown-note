@@ -9,7 +9,7 @@ type EditTagsModalProps = {
   onClose: () => void
 }
 
-export const EditTagsModal = (props:EditTagsModalProps) => {
+export const EditTagsModal = (props: EditTagsModalProps) => {
   return (
     <Modal show={props.show} onHide={props.onClose}>
       <Modal.Header closeButton>
