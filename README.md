@@ -1,6 +1,6 @@
-# Markdown Note
+# Note App
 
-Markdown Note is a website that allows users to create notes with tags, title and markdown body. Users can delete or edit the notes after creating them. Users can also edit, delete or add new tags and it will automatically update all the tags in the notes.
+Note App is a website that allows users to create notes with tags, title and markdown body. Users can delete or edit the notes after creating them. Users can also edit, delete or add new tags and it will automatically update all the tags in the notes.
 
 ## Features
 
@@ -32,3 +32,9 @@ To run this project locally, you need to have Node.js and npm installed on your 
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 5. Open your browser and go to `http://localhost:5173`
+
+## Demo
+
+
+https://github.com/AhmedMahmoudAbdelfatah/note-app/assets/92806885/1e52e546-055f-4701-a498-d3fe04c6c579
+
