@@ -1,6 +1,7 @@
 # Note App
 
 Note App is a website that allows users to create notes with tags, title and markdown body. Users can delete or edit the notes after creating them. Users can also edit, delete or add new tags and it will automatically update all the tags in the notes.
+Feel free to try it yourself (https://note-vite.vercel.app).
 
 ## Features
 
